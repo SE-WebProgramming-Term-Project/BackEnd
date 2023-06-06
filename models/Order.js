@@ -10,7 +10,7 @@ const orderSchema = mongoose.Schema({
     maxlength: 15,
   },
   orderDate: {
-    type: Date,
+    type: String,
   },
   orderMenu: {
     type: [String],

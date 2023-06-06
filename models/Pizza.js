@@ -21,7 +21,7 @@ const pizzaSchema = mongoose.Schema({
     type: Number,
   },
   update: {
-    type: Date,
+    type: String,
   },
   category: {
     type: String,

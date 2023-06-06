@@ -20,8 +20,7 @@ const userSchema = mongoose.Schema({
     minlength: 10,
   },
   birth: {
-    type: Date,
-    default: Date.now,
+    type: String,
   },
   email: {
     type: String,
