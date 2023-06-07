@@ -13,7 +13,7 @@ const orderSchema = mongoose.Schema({
     type: String,
   },
   orderMenu: {
-    type: [String],
+    type: [Number],
   },
   totalPrice: {
     type: Number,
