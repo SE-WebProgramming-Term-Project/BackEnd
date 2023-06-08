@@ -18,6 +18,7 @@ const dbName = config["MongoDB"]["Database"];
 const userRouter = require("./routers/user");
 const reviewRouter = require("./routers/review");
 const orderRouter = require("./routers/order");
+const pizzaRouter = require("./routers/pizza");
 
 mongoose
   .connect(`mongodb://${dbHost}:${dbPort}/${dbName}`)
@@ -32,6 +33,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/user", userRouter);
 app.use("/review", reviewRouter);
 app.use("/order", orderRouter);
+app.use("/pizza", pizzaRouter);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
