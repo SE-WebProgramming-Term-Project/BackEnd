@@ -14,4 +14,32 @@ router.post("/register", (req, res) => {
   });
 });
 
+router.get("/login", (req, res) => {
+  const { id } = req.query;
+
+  User.find({ id }, (err, userData) => {
+    if (err) {
+      console.log(err);
+      return res.json({
+        loginSuccess: false,
+        message: "오류가 발생했습니다.",
+      });
+    }
+
+    if (!userData || userData.length === 0) {
+      return res.json({
+        loginSuccess: false,
+        message: "ID가 존재하지 않습니다.",
+      });
+    }
+
+    const pw = userData[0].pw;
+    
+    return res.json({
+      loginSuccess: true,
+      pw: pw,
+    });
+  });
+});
+
 module.exports = router;
