@@ -15,14 +15,9 @@ const dbHost = config["MongoDB"]["Host"];
 const dbPort = config["MongoDB"]["Port"];
 const dbName = config["MongoDB"]["Database"];
 
-
 const userRouter = require("./routers/user");
 const reviewRouter = require("./routers/review");
-
-// mongoose
-//   .connect("mongodb+srv://root:rootpass13579@clusterpizza.dal4jmk.mongodb.net/")
-//   .then(() => console.log("DB Connected"))
-//   .catch((err) => console.log(err));
+const orderRouter = require("./routers/order");
 
 mongoose
   .connect(`mongodb://${dbHost}:${dbPort}/${dbName}`)
@@ -31,13 +26,12 @@ mongoose
 
 const db = mongoose.connection;
 
-// const { User } = require("./models/User");
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/user", userRouter);
 app.use("/review", reviewRouter);
+app.use("/order", orderRouter);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
@@ -46,36 +40,3 @@ app.get("/", (req, res) => {
 app.listen(port, () => {
   console.log(`Server running at ${port} port.`);
 });
-
-// app.post("/api/user/register", (req, res) => {
-//   const user = new User(req.body);
-
-//   user.save((err, userInfo) => {
-//     console.log(err);
-//     return err
-//       ? res.json({ success: false, err })
-//       : res.status(200).json({ success: true, userInfo: userInfo });
-//   });
-// });
-
-// app.post("/api/user/login", (req, res) => {
-//   User.findOne({ id: req.body.id }, (err, user) => {
-//     if (!user) {
-//       return res.json({
-//         loginSuccess: false,
-//         message: "id 오류",
-//       });
-//     }
-
-//     user.comparePassword(req.body.pw, (err, isMatch) => {
-//       if(!isMatch){
-//         return res.json({
-//           loginSuccess: false,
-//           message: "비밀번호 틀림",
-//         })
-//       }
-
-//       user.generate
-//     })
-//   });
-// });
