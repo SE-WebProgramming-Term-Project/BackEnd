@@ -55,4 +55,66 @@ router.get("/view", (req, res) => {
   });
 });
 
+router.get("/count", (req, res) => {
+  const { orderMenu } = req.query;
+
+  Order.count({ orderMenu }, (err, count) => {
+    if (err) {
+      console.log(err);
+      return res.json({
+        countSuccess: false,
+        message: "오류가 발생했습니다.",
+      });
+    }
+
+    if (!count || count.length === 0) {
+      return res.json({
+        countSuccess: false,
+        message: "주문내역이 존재하지 않습니다.",
+      });
+    }
+
+    res.json({
+      countSuccess: true,
+      countData: count,
+    });
+  });
+});
+
+router.get("/findAll", (req, res) => {
+  Order.find({}, (err, orders) => {
+    if (err) {
+      console.log(err);
+      return res.json({
+        findAllSuccess: false,
+        message: "오류가 발생했습니다.",
+      });
+    }
+
+    if (!orders || orders.length === 0) {
+      return res.json({
+        findAllSuccess: false,
+        message: "주문내역이 존재하지 않습니다.",
+      });
+    }
+
+    const orderData = orders.map((order) => {
+      return {
+        orderNum: order.orderNum,
+        id: order.id,
+        orderDate: order.orderDate,
+        orderMenu: order.orderMenu,
+        totalPrice: order.totalPrice,
+        dest: order.dest,
+        store: order.store,
+      };
+    });
+
+    res.json({
+      findAllSuccess: true,
+      orderData: orderData,
+    });
+  });
+});
+
 module.exports = router;
