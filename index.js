@@ -7,7 +7,7 @@ const cors = require("cors");
 const app = express();
 
 app.use(cors());
-
+app.use(express.json({ limit: "10mb" }));
 const config = yaml.load(fs.readFileSync("config.yml", "utf-8"));
 // const hostname = config["Server"]["Host"];
 const port = config["Server"]["Port"];
