@@ -12,7 +12,7 @@ const pizzaSchema = mongoose.Schema({
     type: String,
   },
   tag: {
-    type: [String],
+    type: String,
   },
   large: {
     type: Number,
