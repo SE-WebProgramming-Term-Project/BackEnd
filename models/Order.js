@@ -13,7 +13,7 @@ const orderSchema = mongoose.Schema({
     type: String,
   },
   orderMenu: {
-    type: [Number],
+    type: [String],
   },
   totalPrice: {
     type: Number,
@@ -26,6 +26,7 @@ const orderSchema = mongoose.Schema({
   },
   isReviewed: {
     type:Boolean,
+    default:false,
   }
 });
 

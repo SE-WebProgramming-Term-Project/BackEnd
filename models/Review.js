@@ -57,7 +57,7 @@ const reviewSchema = mongoose.Schema({
   //   unique: 1,
   // },
   pizzaId: {
-    type: Number,
+    type: String,
   },
   score: {
     type: Number,

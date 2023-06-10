@@ -44,6 +44,7 @@ router.get("/view", (req, res) => {
         totalPrice: order.totalPrice,
         dest: order.dest,
         store: order.store,
+        isReviewed: order.isReviewed,
       };
     });
 
@@ -107,6 +108,7 @@ router.get("/findAll", (req, res) => {
         totalPrice: order.totalPrice,
         dest: order.dest,
         store: order.store,
+        isReviewed: order.isReviewed,
       };
     });
 
