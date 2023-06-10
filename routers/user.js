@@ -34,9 +34,11 @@ router.get("/login", (req, res) => {
     }
 
     const pw = userData[0].pw;
+    const type = userData[0].type;
 
     return res.json({
       loginSuccess: true,
+      type: type,
       pw: pw,
     });
   });

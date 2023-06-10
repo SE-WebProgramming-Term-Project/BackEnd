@@ -46,6 +46,7 @@ router.get("/view", (req, res) => {
       update: pizzaData[0].update,
       category: pizzaData[0].category,
       metarial: pizzaData[0].metarial,
+      count: pizzaData[0].count,
     };
 
     res.json({
@@ -85,6 +86,7 @@ router.get("/findAll", (req, res) => {
         update: pizza.update,
         category: pizza.category,
         metarial: pizza.metarial,
+        count: pizza.count,
       };
     });
 
@@ -92,6 +94,21 @@ router.get("/findAll", (req, res) => {
       pizzaSuccess: true,
       pizzaData: pizzaData,
     });
+  });
+});
+
+router.post("/countUpdate", (req, res) => {
+  const pizza = req.body;
+
+  console.log(pizza);
+
+  pizza.count += pizza.newCount;
+
+  Pizza.updateMany({ _id: pizza._id }, { $set: { count: pizza.count } }, (err, pizzaInfo) => {
+    console.log(err);
+    return err
+      ? res.json({ success: false, err })
+      : res.status(200).json({ success: true, pizzaInfo: pizzaInfo });
   });
 });
 

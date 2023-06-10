@@ -37,6 +37,7 @@ router.get("/view", (req, res) => {
 
     const orderData = orders.map((order) => {
       return {
+        _id : order._id,
         orderNum: order.orderNum,
         id: order.id,
         orderDate: order.orderDate,
@@ -101,6 +102,7 @@ router.get("/findAll", (req, res) => {
 
     const orderData = orders.map((order) => {
       return {
+        _id : order._id,
         orderNum: order.orderNum,
         id: order.id,
         orderDate: order.orderDate,
@@ -118,5 +120,16 @@ router.get("/findAll", (req, res) => {
     });
   });
 });
+
+router.post("/update", (req, res) => {
+  const order = req.body;
+
+  Order.updateMany({_id : order._id}, {$set: order}, (err, orderInfo) => {
+    console.log(err);
+    return err
+    ? res.json({ success: false, err })
+    : res.status(200).json({ success: true, orderInfo: orderInfo });
+  })
+})
 
 module.exports = router;

@@ -28,6 +28,10 @@ const pizzaSchema = mongoose.Schema({
   },
   metarial: {
     type: [String],
+  },
+  count: {
+    type: Number,
+    default: 0,
   }
 });
 

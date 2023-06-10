@@ -34,7 +34,7 @@ router.get("/view", (req, res) => {
 
     const reviewData = reviews.map((review) => {
       return {
-        id: review.id,
+        _id: review._id,
         pizzaId: review.pizzaId,
         score: review.score,
         evaluation: review.evaluation,
