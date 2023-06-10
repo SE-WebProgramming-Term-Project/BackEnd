@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 
 const orderSchema = mongoose.Schema({
-  orderNum: {
-    type: Number,
-    unique: 1,
-  },
+  // orderNum: {
+  //   type: Number,
+  //   unique: 1,
+  // },
   id: {
     type: String,
     maxlength: 15,
@@ -23,6 +23,9 @@ const orderSchema = mongoose.Schema({
   },
   store: {
     type: String,
+  },
+  isReviewed: {
+    type:Boolean,
   }
 });
 

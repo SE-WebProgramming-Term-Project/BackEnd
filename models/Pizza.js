@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 
 const pizzaSchema = mongoose.Schema({
-  id: {
-    type: Number,
-    unique: 1,
-  },
+  // id: {
+  //   type: Number,
+  //   unique: 1,
+  // },
   img: {
     type: String,
   },

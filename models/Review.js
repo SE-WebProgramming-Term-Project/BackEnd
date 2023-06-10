@@ -52,10 +52,10 @@
 const mongoose = require("mongoose");
 
 const reviewSchema = mongoose.Schema({
-  id: {
-    type: Number,
-    unique: 1,
-  },
+  // id: {
+  //   type: Number,
+  //   unique: 1,
+  // },
   pizzaId: {
     type: Number,
   },
